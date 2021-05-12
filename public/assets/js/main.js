@@ -11,6 +11,8 @@ function getIRIParameterValue(requestedKey){
     }
 }
 
+// CommentPlaceholder
+
 let username = getIRIParameterValue('username');
 if ((typeof username == 'undefined') || (username === null)){
     username = "Anonymous_"+Math.floor(Math.random()*1000);
