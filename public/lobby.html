@@ -12,14 +12,18 @@
         .headerrow {
             background-color: #917ddb;
         }
-        .join_room_response {
+        #messagePane {
+            background-color: #d5cdf3;
+        }
+        .join_room_response,
+        .left_room_response {
             margin: 3px 1px 3px 10px;
-            background-color: #d6d6d6;
+            background-color: #e6e6e6;
         }
         .chat_message {
             font-size:125%;
             margin: 1px 1px 5px 1px;
-            color: rgb(16, 101, 197);
+            color: rgb(0, 0, 0);
         }
     </style>
     <title>Reversi: Lobby</title>
@@ -29,14 +33,23 @@
     <div class="container-fluid">
         <div class="row m-3 headerrow">
             <div class="col text-center">
-                <h3>Lobby</h3>
+                <h3 id="lobbyTitle">Lobby</h3>
             </div>
         </div>
 
         <div class="row m-3">
             <div class="col">
-                <div class="row align-items-center justify-content-center m-3">
-                    <div class="col-8">
+                <div class="row align-items-start justify-content-center">
+                    <div class="col-md-4">
+                        <h4>Players</h4>
+                        <div id="players" class="align-items-end text-right m-3">
+                        </div>
+                    </div>
+
+                    <div class="col-md-8" id="messagePane">
+                        <div>
+                            <h4>Messages</h4>
+                        </div>
                         <div class="input-group">
                             <input type="text" class="form-control text-nowrap" id="chatMessage"
                                 placeholder="Enter your message here"
@@ -44,10 +57,9 @@
                             <button type="submit" class="btn btn-primary text-nowrap" id="chatButton"
                                 onclick="sendChatMessage()">Send</button>
                         </div>
+                        <div id="messages"></div>
                     </div>
                 </div>
-                <h4>Messages</h4>
-                <div id="messages"></div>
             </div>
         </div>
 
@@ -56,6 +68,7 @@
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha384-Dziy8F2VlJQLMShA6FHWNul/veM9bCkRUaLqr199K94ntO5QUrLJBEbYegdSkkqX" crossorigin="anonymous"></script>
     <script src="https://cdn.socket.io/4.0.1/socket.io.min.js" integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous"></script>
     <script src="assets/js/main.js"></script>
 </body>
