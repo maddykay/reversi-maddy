@@ -187,7 +187,7 @@ socket.on('join_room_response', (payload) => {
 
 
     /* Announcing in the chat that someone has arrived */
-    let newHTML = '<p class=\'join_room_response\'>' + payload.username + ' joined the ' + payload.room + '. (There are ' + payload.count + ' users in this room)</p>';
+    let newHTML = '<p class=\'join_room_response\'>' + payload.username + ' joined the chatroom. (There are ' + payload.count + ' users in this room)</p>';
     let newNode = $(newHTML);
     newNode.hide();
     $('#messages').prepend(newNode);
@@ -240,6 +240,90 @@ socket.on('send_chat_message_response', (payload) => {
     newNode.hide();
     $('#messages').prepend(newNode);
     newNode.show("fade", 500);
+})
+
+let old_board = [
+    ['?', '?', '?', '?', '?', '?', '?', '?'],
+    ['?', '?', '?', '?', '?', '?', '?', '?'],
+    ['?', '?', '?', '?', '?', '?', '?', '?'],
+    ['?', '?', '?', '?', '?', '?', '?', '?'],
+    ['?', '?', '?', '?', '?', '?', '?', '?'],
+    ['?', '?', '?', '?', '?', '?', '?', '?'],
+    ['?', '?', '?', '?', '?', '?', '?', '?'],
+    ['?', '?', '?', '?', '?', '?', '?', '?']
+];
+
+socket.on('game_update', (payload) => {
+    if ((typeof payload == 'undefined') || (payload === null)) {
+        console.log('Server did not send a payload');
+        return;
+    }
+    if (payload.result === 'fail') {
+        console.log(payload.messages);
+        return;
+    }
+
+    let board = payload.game.board;
+    if ((typeof payload == 'undefined') || (board === null)) {
+        console.log('Server did not send a valid board to display');
+        return;
+    }
+
+    /* Update my color */
+
+    /* Animate changes to board */
+    for (let row = 0; row < 8; row++) {
+        for (let column = 0; column < 8; column++) {
+            /* Check to see if the server changed any space on the board */
+            if (old_board[row][column] !== board[row][column]) {
+                let graphic = "";
+                let altTag = "";
+                if ((old_board[row][column] === '?') && (board[row][column] === ' ')) {
+                    graphic = "empty.gif";
+                    altTag = "Empty Space";
+                }
+                else if ((old_board[row][column] === '?') && (board[row][column] === 'w')) {
+                    graphic = "empty_to_white.gif";
+                    altTag = "White Token";
+                }
+                else if ((old_board[row][column] === '?') && (board[row][column] === 'b')) {
+                    graphic = "empty_to_black.gif";
+                    altTag = "Black Token";
+                }
+                else if ((old_board[row][column] === ' ') && (board[row][column] === 'w')) {
+                    graphic = "empty_to_white.gif";
+                    altTag = "White Token";
+                }
+                else if ((old_board[row][column] === ' ') && (board[row][column] === 'b')) {
+                    graphic = "empty_to_black.gif";
+                    altTag = "Black Token";
+                }
+                else if ((old_board[row][column] === 'w') && (board[row][column] === ' ')) {
+                    graphic = "white_to_empty.gif";
+                    altTag = "Empty Space";
+                }
+                else if ((old_board[row][column] === 'b') && (board[row][column] === ' ')) {
+                    graphic = "black_to_empty.gif";
+                    altTag = "Empty Space";
+                }
+                else if ((old_board[row][column] === 'w') && (board[row][column] === 'b')) {
+                    graphic = "white_to_black.gif";
+                    altTag = "Black Token";
+                }
+                else if ((old_board[row][column] === 'b') && (board[row][column] === 'w')) {
+                    graphic = "black_to_white.gif";
+                    altTag = "White Token";
+                }
+                else {
+                    graphic = "error.gif";
+                    altTag = "Error";
+                }
+                const t = Date.now();
+                $('#' + row + '_' + column).html('<img class="img-fluid" src="assets/images/' + graphic + '?time=' + t + '" alt="' + altTag + '" />');
+            }
+        }
+    }
+    old_board = board;
 })
 
 /* Request to join the chat room */
