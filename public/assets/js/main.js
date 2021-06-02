@@ -283,7 +283,25 @@ socket.on('game_update', (payload) => {
         return;
     }
 
-    $("#my_color").html('<h3 id="my_color">I am ' + my_color + '</h3>');
+    if (my_color === 'white') {
+        $("#my_color").html('<h3 id="my_color">You\'re a vanilla sprinkle donut</h3>');
+    }
+    else if (my_color === 'black') {
+        $("#my_color").html('<h3 id="my_color">You\'re a chocolate sprinkle donut</h3>');
+    }
+    else {
+        $("#my_color").html('<h3 id="my_color">I\'m not a donut, I\'m an imposter</h3>');
+    }
+
+    if (payload.game.whose_turn === 'white') {
+        $("#my_color").append('<h4>It\'s vanilla sprinkle\'s turn</h4>');
+    }
+    else if (payload.game.whose_turn === 'black') {
+        $("#my_color").append('<h4>It\'s chocolate sprinkle\'s turn</h4>');
+    }
+    else {
+        $("#my_color").append('<h4>Error: it\'s not your turn</h4>');
+    }
 
     let whitesum = 0;
     let blacksum = 0;
@@ -291,10 +309,10 @@ socket.on('game_update', (payload) => {
     /* Animate changes to board */
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
-            if (board[row][column] === 'w' ) {
+            if (board[row][column] === 'w') {
                 whitesum++;
             }
-            else if (board[row][column] === 'b' ) {
+            else if (board[row][column] === 'b') {
                 blacksum++;
             }
 
@@ -345,9 +363,13 @@ socket.on('game_update', (payload) => {
 
                 const t = Date.now();
                 $('#' + row + '_' + column).html('<img class="img-fluid" src="assets/images/' + graphic + '?time=' + t + '" alt="' + altTag + '" />');
+            }
 
-                $('#' + row + '_' + column).off('click');
-                if (board[row][column] === ' ') {
+            /* Set up interactivity here */
+            $('#' + row + '_' + column).off('click');
+            $('#' + row + '_' + column).removeClass('hovered_over');
+            if (payload.game.whose_turn === my_color) {
+                if (payload.game.legal_moves[row][column] === my_color.substr(0, 1)) {
                     $('#' + row + '_' + column).addClass('hovered_over');
                     $('#' + row + '_' + column).click(((r, c) => {
                         return (() => {
@@ -360,9 +382,6 @@ socket.on('game_update', (payload) => {
                             socket.emit('play_token', payload);
                         });
                     })(row, column));
-                }
-                else {
-                    $('#' + row + '_' + column).removeClass('hovered_over');
                 }
             }
         }
@@ -378,7 +397,8 @@ socket.on('play_token_response', (payload) => {
         return;
     }
     if (payload.result === 'fail') {
-        console.log(payload.messages);
+        console.log(payload.message);
+        alert(payload.message);
         return;
     }
 })
@@ -415,7 +435,7 @@ $(() => {
     socket.emit('join_room', request);
 
     $("#lobbyTitle").html(username + "'s Lobby");
-    
+
     $("#quit").html("<a href='lobby.html?username=" + username + "' class='btn btn-danger' role='button'>Quit</a>");
 
     $('#chatMessage').keypress(function (e) {

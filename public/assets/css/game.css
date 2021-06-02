@@ -1,9 +1,9 @@
 body {
-    background-color: #F2D1EF;
+    background-color: #e195da;
 }
 
 .headerrow, #messagePane {
-    background-color: #e195da;
+    background-color: #71a2cf;
 }
 
 .join_room_response,
@@ -25,6 +25,7 @@ table#game_board{
 }
 
 table#game_board td{
+    background-color: #F2D1EF;
     border:2px solid black;
     margin:0px;
     padding:0px;
