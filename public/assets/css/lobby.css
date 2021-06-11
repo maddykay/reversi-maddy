@@ -1,0 +1,92 @@
+body {
+    background-color: white;
+    /* For browsers that do not support gradients */
+    height: 100px;
+    background-image: linear-gradient(#FFA5F6, white);
+    background-position: center center;
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+
+h4{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    color: #00528E;
+    padding-top: 16px;
+    padding-right: 32px;
+    padding-bottom: 16px;
+    padding-left: 10px;
+}
+
+#lobbyTitle{
+    color: #ffffff;
+    text-shadow: 1px 1px 3px #000000;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 48px;
+    font-family: 'Grand Hotel', cursive;
+}
+
+#playerLabel{
+    color: #676767;
+    font-style: 'Quicksand', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#players{
+    color: #222222;
+    font-style: 'Quicksand', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+#messagePane {
+    background-color: rgb(255, 165, 246, 0.5);
+    padding-top: 16px;
+    padding-right: 32px;
+    padding-bottom: 32px;
+    padding-left: 24px;
+    color: #272e33;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.join_room_response,
+.left_room_response {
+    margin: 4px 4px 4px 10px;
+    font-weight: 300;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.chat_message {
+    font-size: 16px;
+    padding-top: 4px;
+    padding-right: 32px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    color: rgb(36, 36, 36);
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#chatButton{
+    background-color: #00528E;
+    border: none;
+    color: white;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+}
+#chatButton:hover{
+    background-color: #6EA6CF;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+}

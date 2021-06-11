@@ -1,21 +1,141 @@
 body {
-    background-color: #e195da;
+        background-color: white;
+        /* For browsers that do not support gradients */
+        height: 100px;
+        background-image: linear-gradient(#ab98ff, white);
+        background-position: center center;
+        background-repeat:no-repeat;
+        background-size: cover;
 }
 
-.headerrow, #messagePane {
-    background-color: #71a2cf;
+#gameTitle{
+    color: #ffffff;
+    text-shadow: 1px 1px 3px #000000;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 48px;
+    font-family: 'Grand Hotel', cursive;
+}
+
+h4{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    color: #00528E;
+    padding-top: 16px;
+    padding-right: 32px;
+    padding-bottom: 16px;
+    padding-left: 10px;
+}
+
+#messagePane {
+    background-color: rgb(206, 187, 249, 0.5);
+    padding-top: 16px;
+    padding-right: 32px;
+    padding-bottom: 32px;
+    padding-left: 24px;
+    color: #272e33;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .join_room_response,
 .left_room_response {
-    margin: 3px 1px 3px 10px;
-    background-color: #e6e6e6;
+    padding-top: 8px;
+    padding-right: 32px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    font-weight: 300;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .chat_message {
-    font-size: 125%;
-    margin: 1px 1px 5px 1px;
-    color: rgb(0, 0, 0);
+    font-size: 16px;
+    padding-top: 8px;
+    padding-right: 32px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    color: rgb(36, 36, 36);
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#chatButton{
+    background-color: #00528E;
+    border: none;
+    color: white;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#my_color{
+    color: #00528E;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#whitesum{
+    color: #676767;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#vs{
+    color: #676767;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#blacksum{
+    color: #676767;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#chatButton:hover{
+    background-color: #6EA6CF;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#quit{
+    color: #b80903;
+    padding: 32px 32px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#elapsed{
+    background-color: #6EA6CF;
+    color: black;
 }
 
 table#game_board{
@@ -25,8 +145,8 @@ table#game_board{
 }
 
 table#game_board td{
-    background-color: #F2D1EF;
-    border:2px solid black;
+    background-color: #F9B1F1;
+    border:3px solid black;
     margin:0px;
     padding:0px;
 }

@@ -285,23 +285,23 @@ socket.on('game_update', (payload) => {
     }
 
     if (my_color === 'white') {
-        $("#my_color").html('<h3 id="my_color">You\'re a vanilla sprinkle donut</h3>');
+        $("#my_color").html('<h5 id="my_color" style="color:#676767;">You\'re a vanilla sprinkle donut</h5>');
     }
     else if (my_color === 'black') {
-        $("#my_color").html('<h3 id="my_color">You\'re a chocolate sprinkle donut</h3>');
+        $("#my_color").html('<h5 id="my_color" style="color:#676767;">You\'re a chocolate sprinkle donut</h5>');
     }
     else {
-        $("#my_color").html('<h3 id="my_color">I\'m not a donut, I\'m an imposter</h3>');
+        $("#my_color").html('<h5 id="my_color" style="color:#676767;">I\'m not a donut, I\'m an imposter</h5>');
     }
 
     if (payload.game.whose_turn === 'white') {
-        $("#my_color").append('<h4>It\'s vanilla sprinkle\'s turn</h4>');
+        $("#my_color").append('<h3><b>It\'s vanilla sprinkle\'s turn</b></h3>');
     }
     else if (payload.game.whose_turn === 'black') {
-        $("#my_color").append('<h4>It\'s chocolate sprinkle\'s turn</h4>');
+        $("#my_color").append('<h3><b>It\'s chocolate sprinkle\'s turn</b></h3>');
     }
     else {
-        $("#my_color").append('<h4>Error: it\'s not your turn</h4>');
+        $("#my_color").append('<h3><b>Error: it\'s not your turn</b></h3>');
     }
 
     let whitesum = 0;
@@ -464,7 +464,7 @@ $(() => {
 
     $("#lobbyTitle").html(username + "'s Lobby");
 
-    $("#quit").html("<a href='lobby.html?username=" + username + "' class='btn btn-danger' role='button'>Quit</a>");
+    $("#quit").html("<a href='lobby.html?username=" + username + "' class='btn btn-danger' role='button'>Quit Game</a>");
 
     $('#chatMessage').keypress(function (e) {
         let key = e.which;
